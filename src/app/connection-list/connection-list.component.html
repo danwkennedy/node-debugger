@@ -1,0 +1,12 @@
+<md-list dense>
+
+  <md-list-item *ngFor="let connection of connections">
+    <h3 md-line>{{ connection.name }}</h3>
+    <p md-line class="list-item-detail">{{ connection.host }}:{{ connection.port }}</p>
+  </md-list-item>
+
+  <md-list-item *ngIf="connections.length === 0">
+    <h3 md-line>No Connections Found</h3>
+  </md-list-item>
+
+</md-list>

@@ -1,0 +1,17 @@
+.connection-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.connection-input-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.connection-divider {
+  margin: 15px 5px 0 5px;
+}
+
+label.md-input-placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}

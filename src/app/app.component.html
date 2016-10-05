@@ -1,3 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar color="primary">
+  <span class="toolbar-title">{{ name }}</span>
+</md-toolbar>
+<div class="app-content">
+  <connection-list></connection-list>
+  <h3>Create Connection</h3>
+  <connection-form (onSave)="saveConnection($event)" (onConnect)="startSession($event)"></connection-form>
+<div>

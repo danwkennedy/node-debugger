@@ -1,0 +1,14 @@
+<div class="connection-form">
+  <md-input placeholder="Name" [(ngModel)]="connection.name" required></md-input>
+
+  <div class="connection-input-group">
+    <md-input placeholder="Host" [(ngModel)]="connection.host" required></md-input>
+    <span class="connection-divider">:</span>
+    <md-input placeholder="Port" [(ngModel)]="connection.port"  required></md-input>
+  </div>
+
+  <div class="connection-input-group">
+    <button md-button color="accent" (click)="onStartConnection(connection)">Connect</button>
+    <button md-button color="primary" (click)="onSaveConnection(connection)">Save</button>
+  </div>
+</div>
