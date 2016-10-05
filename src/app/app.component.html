@@ -1,8 +1,29 @@
-<md-toolbar color="primary">
+<!-- <md-toolbar color="primary">
   <span class="toolbar-title">{{ name }}</span>
-</md-toolbar>
+</md-toolbar> -->
 <div class="app-content">
-  <connection-list></connection-list>
-  <h3>Create Connection</h3>
-  <connection-form (onSave)="saveConnection($event)" (onConnect)="startSession($event)"></connection-form>
-<div>
+  <router-outlet></router-outlet>
+  <!-- <md-tab-group>
+    <md-tab>
+      <template md-tab-label>
+        Saved
+      </template>
+      <template md-tab-content>
+        <div class="tab-content"> -->
+          <!-- <connection-list (onSelect)="startSession($event)" (onRemove)="removeConnection($event)"></connection-list> -->
+        <!-- </div>
+      </template>
+    </md-tab>
+    <md-tab>
+      <template md-tab-label>
+        Create
+      </template>
+      <template md-tab-content class="tab-content">
+        <div class="tab-content">
+          <connection-form (onSave)="saveConnection($event)" (onConnect)="startSession($event)"></connection-form>
+        </div>
+      </template>
+    </md-tab>
+  </md-tab-group> -->
+  <!-- <button class="app-fab" md-mini-fab><md-icon class="md-24">add</md-icon></button> -->
+</div>

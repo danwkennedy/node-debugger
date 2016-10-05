@@ -10,6 +10,21 @@ md-toolbar {
 //   font-size: 13px;
 // }
 
-.app-content {
+.tab-content {
   padding: 0 10px 10px 10px;
+}
+
+.app-content {
+  // padding: 0 10px 10px 10px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.app-fab {
+  margin-right: 15px;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: 15px;
 }

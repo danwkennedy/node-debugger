@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
+import { routing, appRoutingProviders } from './app.routing';
+
 import { AppComponent } from './app.component';
 import { ConnectionFormComponent } from './connection-form/connection-form.component';
 import { ConnectionListComponent } from './connection-list/connection-list.component';
@@ -18,9 +20,12 @@ import { ConnectionListComponent } from './connection-list/connection-list.compo
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    routing
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

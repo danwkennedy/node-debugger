@@ -1,7 +1,31 @@
+connection-list {
+  display: flex;
+  flex: auto;
+}
+
+md-nav-list {
+  flex: auto;
+}
+
 md-list-item {
   color: #666;
 }
 
-md-list-item > .list-item-detail {
+md-list-item .list-item-title {
+  margin-bottom: 5px;
+}
+
+md-list-item .list-item-detail {
+  margin-top: 5px;
   color: #ccc;
+}
+
+md-list-item .list-action {
+  margin-left: auto;
+}
+
+.fab {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
 }

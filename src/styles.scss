@@ -26,3 +26,16 @@ $theme: md-light-theme($primary, $accent, $warn);
 h3 {
   color: rgba(0, 0, 0, 0.6);
 }
+
+app-root {
+  flex: auto;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+ng-component {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}

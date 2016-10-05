@@ -12,7 +12,7 @@ import { Connection } from './connection';
 export class AppComponent implements OnInit {
   name = `Node Debugger`;
 
-  constructor(private debuggers : DebuggerService ) { }
+  constructor(private debuggers : DebuggerService, private storage : StorageService ) { }
 
   startSession(connection: Connection): void {
     console.log(`Starting a debugging session for: http://${ connection.host }:${ connection.port }`);
@@ -21,13 +21,7 @@ export class AppComponent implements OnInit {
         console.log(debuggers);
 
         if (!!debuggers.length) {
-          let url = debuggers[0].devtoolsFrontendUrl;
-
-          if (url.search(new RegExp(`${connection.host}:${connection.port}`)) === -1) {
-            url = url.replace(/9229/i, connection.port.toString());
-          }
-
-          chrome.windows.create({ url: url });
+          this.debuggers.connectToDebugger(debuggers[0], connection);
         }
 
       })
@@ -38,10 +32,31 @@ export class AppComponent implements OnInit {
 
   saveConnection(connection: Connection): void {
     console.log(`Saving connection ${ connection.host }:${ connection.port }`);
+    this.storage.get({connections: [] }).then(({ connections }) => {
+      connections.push(connection);
+
+      return this.storage.set({ connections: connections });
+    }).then(() => {
+      console.log('Successfully saved connection');
+    });
   }
 
   ngOnInit() : void {
 
+  }
+
+  removeConnection(connection: Connection) : void {
+    console.log(`Removing connection named '${ connection.name }'`);
+    this.storage.get({connections: []}).then(({ connections }) => {
+      connections.splice(connections.indexOf(connection), 1);
+
+      if (!!connections.length) {
+        return this.storage.set({ connections: connections });
+      } else {
+        return this.storage.remove('connections');
+      }
+
+    });
   }
 
 }

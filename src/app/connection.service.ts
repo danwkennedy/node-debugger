@@ -8,7 +8,9 @@ export class ConnectionService {
   constructor(private storage: StorageService) { }
 
   getConnections() : Promise<Connection[]> {
-    return this.storage.get('connections').then( res => res.connection as Connection[]);
+    return this.storage.get({connections: [{ name: 'Default', host: 'localhost', port: 9229 }]}).then( ({ connections }) => {
+      return connections as Connection[];
+    });
   }
 
 }

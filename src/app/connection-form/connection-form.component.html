@@ -1,3 +1,6 @@
+<md-toolbar color="primary">
+  <a md-icon-button class="back-button" routerLink="/"><md-icon>arrow_back</md-icon></a><span class="toolbar-title">Add Debugger</span>
+</md-toolbar>
 <div class="connection-form">
   <md-input placeholder="Name" [(ngModel)]="connection.name" required></md-input>
 
@@ -8,7 +11,6 @@
   </div>
 
   <div class="connection-input-group">
-    <button md-button color="accent" (click)="onStartConnection(connection)">Connect</button>
     <button md-button color="primary" (click)="onSaveConnection(connection)">Save</button>
   </div>
 </div>
