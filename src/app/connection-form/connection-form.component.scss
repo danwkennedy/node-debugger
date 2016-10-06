@@ -1,3 +1,10 @@
+@import '~@angular/material/core/style/elevation';
+
+.toolbar {
+  @include md-elevation(1);
+  @include md-elevation-transition;
+}
+
 .connection-form {
   display: flex;
   flex-direction: column;

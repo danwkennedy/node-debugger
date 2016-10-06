@@ -11,17 +11,46 @@ import { Connection } from '../connection';
 })
 export class ConnectionListComponent implements OnInit {
   connections = [];
+  active = [];
+  inactive = [];
 
   constructor(private connectionService: ConnectionService, private debuggerService: DebuggerService, private storageService: StorageService) { }
 
   ngOnInit() {
     this.connections = [];
+    this.active = [];
+    this.inactive = [];
     this.refreshList();
   }
 
   refreshList() {
+    this.connections = [];
+    this.active = [];
+    this.inactive = [];
+
     this.connectionService.getConnections().then(connections => {
       this.connections = connections || [];
+
+      this.connections.map( connection => {
+        this.debuggerService.available(connection)
+          .then( available => {
+            console.log()
+            if (available) {
+              this.active.push(connection);
+            } else {
+              this.inactive.push(connection);
+            }
+          });
+      });
+
+      let def = { host: 'localhost', port: 9229, name: 'Default' } as Connection;
+
+      this.debuggerService.available(def)
+        .then( available => {
+          if (available) {
+            this.active.push(def);
+          }
+        })
     });
   }
 

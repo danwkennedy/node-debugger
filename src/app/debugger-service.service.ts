@@ -22,6 +22,13 @@ export class DebuggerService {
       });
   }
 
+  available(connection: Connection) : Promise<Boolean> {
+    return this.http.get(`http://${ connection.host }:${ connection.port }/json/list`)
+      .toPromise()
+      .then(() => true)
+      .catch(() => false);
+  }
+
   connectToDebugger(target: Debugger, connection: Connection) {
     let url = target.devtoolsFrontendUrl;
 

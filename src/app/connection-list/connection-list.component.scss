@@ -1,3 +1,5 @@
+@import '~@angular/material/core/style/elevation';
+
 connection-list {
   display: flex;
   flex: auto;
@@ -24,8 +26,23 @@ md-list-item .list-action {
   margin-left: auto;
 }
 
+.toolbar {
+  @include md-elevation(1);
+  @include md-elevation-transition;
+}
+
+.subheader {
+  padding: 0 16px;
+  color: rgba(0, 0, 0, .5);
+}
+
+.lists {
+  overflow: scroll;
+}
+
 .fab {
   position: fixed;
   right: 15px;
-  bottom: 15px;
+  top: 44px;
+  z-index: 10;
 }
