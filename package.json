@@ -1,6 +1,6 @@
 {
   "name": "node-debugger",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -9,10 +9,11 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
+    "deploy": "ng build -prod -o ./build && npm run compress",
     "deploy-dev": "npm run clear && ng build -o ./build && npm run copy",
     "clear": "rm -rf bin/*",
     "copy": "cp -R build/* bin && cp manifest.json bin",
-    "compress": "zip -r -X bin/$npm_package_name-$npm_package_version.zip manifest.json && cd build && zip -r -X ../bin/$npm_package_name-$npm_package_version.zip *"
+    "compress": "zip -r -X releases/$npm_package_name-$npm_package_version.zip manifest.json && cd build && zip -r -X ../bin/$npm_package_name-$npm_package_version.zip *"
   },
   "private": true,
   "dependencies": {
