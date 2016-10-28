@@ -36,6 +36,12 @@ export class DebuggerService {
       url = url.replace(/9229/i, connection.port.toString());
     }
 
-    this.chrome.windows.create({ url: url });
+    this.chrome.windows.create({ url: url }, window => {
+      let tab = window.tabs[0];
+      tab.title = `${ connection.name } | Node Debugger`;
+      tab.favIconUrl = 'assets/icon32.png';
+
+      this.chrome.tabs.executeScript(tab.id, { code: `document.title = '${ connection.name } | Node Debugger'` });
+    });
   }
 }
