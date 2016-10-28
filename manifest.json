@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Node Debugger",
   "description": "Debug Node in Chrome devtools",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "browser_action": {
     "default_popup": "index.html"
   },
