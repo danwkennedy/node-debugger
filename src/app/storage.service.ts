@@ -7,7 +7,6 @@ export class StorageService {
   constructor() {
     if (typeof chrome.storage !== 'undefined') {
       this.storage = chrome.storage.sync;
-      console.log(this.storage);
     }
   }
 
@@ -21,7 +20,7 @@ export class StorageService {
     return Promise.resolve({});
   }
 
-  set(items: any) : Promise<void> {
+  set(items: any) : Promise<void|{}> {
     if (!!this.storage) {
       return new Promise((resolve, reject) => {
         this.storage.set(items, resolve);
@@ -31,7 +30,7 @@ export class StorageService {
     return Promise.resolve();
   }
 
-  remove(key: string) : Promise<void> {
+  remove(key: string) : Promise<void|{}> {
     if (!!this.storage) {
       return new Promise((resolve, reject) => {
         this.storage.remove(key, resolve);
@@ -41,7 +40,7 @@ export class StorageService {
     return Promise.resolve();
   }
 
-  clear() : Promise<void> {
+  clear() : Promise<void|{}> {
     if (!!this.storage) {
       return new Promise((resolve, reject) => {
         this.storage.clear(resolve);
